@@ -39,12 +39,12 @@ Unattended-Upgrade::Remove-Unused-Kernel-Packages "{{ updates_remove_unused_kern
 
 Unattended-Upgrade::Remove-Unused-Dependencies "{{ updates_remove_unused_dependencies | ternary('true', 'false') }}";
 
-{% if updates_automatic_reboot | bool %}
-Unattended-Upgrade::Automatic-Reboot "{{ updates_automatic_reboot | ternary('true', 'false') }}";
+{% if updates_reboot | bool %}
+Unattended-Upgrade::Automatic-Reboot "{{ updates_reboot | ternary('true', 'false') }}";
 
-Unattended-Upgrade::Automatic-Reboot-WithUsers "{{ updates_automatic_reboot_with_users | ternary('true', 'false') }}";
+Unattended-Upgrade::Automatic-Reboot-WithUsers "{{ updates_reboot_with_users | ternary('true', 'false') }}";
 
-Unattended-Upgrade::Automatic-Reboot-Time "{{ updates_automatic_reboot }}";
+Unattended-Upgrade::Automatic-Reboot-Time "{{ updates_reboot }}";
 {% endif -%}
 {% if updates_dl_limit > 0 %}
 

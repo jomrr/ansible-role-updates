@@ -26,10 +26,10 @@ Ansible 2.7 or higher is recommended.
 
 Variables and defaults for this role:
 
-| Variables affecting multiple package managers |
-| |
-| variable | default | affects pkg_mgr | description |
-| -------- | ------- | ----------------| ----------- |
+### Variables affecting multiple package managers
+
+| variable | default | pkg_mgr | description |
+| -------- | ------- | ------- | ----------- |
 | updates_enabled | False | all | Determine whether role is enabled (True) or not (False) |
 | updates_apply | True | all | apply downloaded upgrades |
 | updates_blacklist | [] | all | List of blacklisted packages, that will not be upgraded (regexp possible) |
@@ -41,15 +41,12 @@ Variables and defaults for this role:
 | updates_random_sleep | 120 | dnf, yum | Random sleep in minutes for dnf and yum |
 | updates_system_name | '' | dnf, yum | System name in E-Mails, defaults to hostname if empty |
 
-### Variables affecting **unattended-upgrades** only |
+### Variables affecting **unattended-upgrades** only
 
 | variable | default | pkg_mgr | description |
 | -------- | ------- | ------- | ----------- |
 | updates_autoclean_interval | 1 | apt | Autoclean every n days |
 | updates_autofix | True | apt | Autofix interrupted updates |
-| updates_automatic_reboot | True | apt | Automatic reboot, if needed |
-| updates_automatic_reboot_with_users | False | apt | True = reboot with users logged in, False = do not reboot with logged in users |
-| updates_automatic_reboot_time | "04:00" | apt | Time for automatic reboot, 24h format |
 | updates_dev_release | False | apt | Update Ubuntu Development release |
 | updates_dl_limit | 0 | apt | Bandwith limit in KB/s |
 | updates_install_on_shutdown | False | apt | Upgrade on shutdown only |
@@ -61,6 +58,9 @@ Variables and defaults for this role:
 |                 | `- "origin={{ ansible_distribution }},codename={{ ansible_distribution_release }}-security"`|     |                      |
 |                 | `- "origin={{ ansible_distribution }},codename={{ ansible_distribution_release }},l={{ ansible_distribution }}-Security"`| | |
 | updates_packages_lists | 1 | apt | Update package lists every n days |
+| updates_reboot | True | apt | Automatic reboot, if needed |
+| updates_reboot_with_users | False | apt | True = reboot with users logged in, False = do not reboot with logged in users |
+| updates_reboot_time | "04:00" | apt | Time for automatic reboot, 24h format |
 | updates_remove_unused_dependencies | False | apt | Autoremove unused dependencies |
 | updates_remove_unused_kernels | True | apt | Autoremove unused Kernels |
 | updates_syslog | True | apt | Log to syslog |

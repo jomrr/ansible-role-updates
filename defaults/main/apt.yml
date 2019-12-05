@@ -37,12 +37,12 @@ updates_remove_unused_kernels: True
 updates_remove_unused_dependencies: False
 
 # automatic reboot
-updates_automatic_reboot: True
+updates_reboot: True
 
-updates_automatic_reboot_with_users: False
+updates_reboot_with_users: False
 
 # time for automatic reboot
-updates_automatic_reboot_time: "04:00"
+updates_reboot_time: "04:00"
 
 # bandwith limit in KB/s
 updates_dl_limit: 0
