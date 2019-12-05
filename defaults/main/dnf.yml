@@ -1,0 +1,23 @@
+---
+# role: ansible-role-updates
+# file: defaults/main/dnf.yml
+
+# update_cmd for dnf, default installs als updates
+updates_dnf_update_cmd: 'default'
+
+# override dnf.conf settings
+# e.g. - { debuglevel: 1 }
+updates_dnf_base: []
+
+# format of command as python format string in str.format(), e.g. "cat"
+updates_dnf_command_format: ''
+
+# contents of stdin to pass to the command, e.g. "{body}"
+updates_dnf_stdin_format: ''
+
+# format of mail command as python format string in str.format(),
+# e.g. "mail -s {subject} -r {email_from} {email_to}"
+updates_dnf_email_command_format: ''
+
+# contents of stdin to pass to the email command, e.g. "{body}"
+updates_dnf_email_stdin_format: ''

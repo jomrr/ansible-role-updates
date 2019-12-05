@@ -1,0 +1,15 @@
+---
+# role: ansible-role-updates
+# file: vars/apt.yml
+
+updates_packages:
+  - apt-listchanges
+  - unattended-upgrades
+
+updates_templates:
+  - 'etc/apt/apt.conf.d/20auto-upgrades'
+  - 'etc/apt/apt.conf.d/50unattended-upgrades'
+
+updates_service: 'unattended-upgrades'
+
+updates_validate: 'sudo unattended-upgrades --dry-run %s'

@@ -1,0 +1,14 @@
+---
+# role: ansible-role-updates
+# file: vars/yum.yml
+
+updates_packages:
+  - yum-cron
+  - yum-utils
+
+updates_templates:
+  - 'etc/yum/yum-cron.conf'
+
+updates_service: 'yum-cron'
+
+updates_validate: '/bin/true %s'

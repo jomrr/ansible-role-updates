@@ -1,0 +1,42 @@
+---
+# role: ansible-role-updates
+# file: meta/main.yml
+
+galaxy_info:
+  role_name: ansible-role-updates
+  author: Jonas Mauer
+  description: Ansible role for configuring automatic updates.
+  company: ''
+
+  # If the issue tracker for your role is not on github, uncomment the
+  # next line and provide a value
+  # issue_tracker_url: http://example.com/issue/tracker
+
+  license: MIT
+
+  min_ansible_version: 2.7
+
+  # If this a Container Enabled role, provide the minimum Ansible Container version.
+  # min_ansible_container_version:
+
+  github_branch: master
+
+  # platforms is a list of platforms, and each platform has a name and a list of versions.
+  #
+  platforms:
+    - name: CentOS
+      versions:
+        - 7
+        - 8
+    - name: Debian
+      versions:
+        - 9
+        - 10
+    - name: Ubuntu
+      versions:
+        - 16
+        - 18
+
+  galaxy_tags: []
+
+  dependencies: []

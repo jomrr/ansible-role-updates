@@ -1,0 +1,60 @@
+---
+# role: ansible-role-updates
+# file: defaults/main/apt.yml
+
+# issue apt-get autoremove every n days
+updates_autoclean_interval: 1
+
+# update package lists every n days
+updates_packages_lists: 1
+
+# allowed_origins for debian based distros
+updates_origins:
+  - "origin={{ ansible_distribution }},codename={{ ansible_distribution_release }}"
+  - "origin={{ ansible_distribution }},codename={{ ansible_distribution_release }}-updates"
+  - "origin={{ ansible_distribution }},codename={{ ansible_distribution_release }}-security"
+  - "origin={{ ansible_distribution }},codename={{ ansible_distribution_release }},l={{ ansible_distribution }}-Security"
+
+# update ubuntu dev release
+updates_dev_release: False
+
+# autofix interrupted updates, should be true to continue getting updates
+updates_autofix: True
+
+# split the upgrade into the smallest possible chunks so that they can be interrupted with SIGTERM
+updates_minimal_steps: True
+
+# install updates on shutdown only
+updates_install_on_shutdown: False
+
+# only send mail on error
+updates_mail_only_on_error: True
+
+# remove unused kernels
+updates_remove_unused_kernels: True
+
+# remove unused dependencies
+updates_remove_unused_dependencies: False
+
+# automatic reboot
+updates_automatic_reboot: True
+
+updates_automatic_reboot_with_users: False
+
+# time for automatic reboot
+updates_automatic_reboot_time: "04:00"
+
+# bandwith limit in KB/s
+updates_dl_limit: 0
+
+# log to syslog
+updates_syslog: True
+
+# syslog facility to use
+updates_syslog_facility: 'daemon'
+
+# run on ac power only
+updates_on_ac_only: True
+
+# only run on unmetered connections
+updates_unmetered: True

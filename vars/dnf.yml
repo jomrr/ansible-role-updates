@@ -1,0 +1,14 @@
+---
+# role: ansible-role-updates
+# file: vars/dnf.yml
+
+updates_packages:
+  - dnf-automatic
+  - dnf-utils
+
+updates_templates:
+  - 'etc/dnf/automatic.conf'
+
+updates_service: 'dnf-automatic.timer'
+
+updates_validate: 'sudo /usr/bin/dnf-automatic --no-installupdates --no-downloadupdates %s'

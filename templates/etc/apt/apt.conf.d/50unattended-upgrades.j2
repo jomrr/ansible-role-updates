@@ -1,0 +1,60 @@
+# 50unattended-upgrades - Managed by Ansible, please do not edit manually.
+# vim: ft=conf
+#
+# {{ ansible_managed }}
+
+Unattended-Upgrade::Origins-Pattern {
+{% for origin in updates_origins %}
+        "{{ origin }}";
+{% endfor %}
+{% if ansible_distribution == "Ubuntu" and updates_origins | length %}
+        "${distro_id}ESM:${distro_codename}";
+{% endif %}
+{% if ansible_lsb.id == "Raspbian" and updates_origins | length %}
+        "origin=Raspbian,codename=${distro_codename},label=Raspbian";
+        "origin=Raspberry Pi Foundation,codename=${distro_codename},label=Raspberry Pi Foundation";
+{% endif %}
+};
+
+{% if updates_blacklist is defined and updates_blacklist | length %}
+Unattended-Upgrade::Package-Blacklist {
+{% for blacklist in updates_blacklist %}
+        "{{ blacklist }}";
+{% endfor %}
+};{% endif %}
+
+{% if ansible_distribution == "Ubuntu" %}Unattended-Upgrade::DevRelease "{{ updates_dev_release | ternary('true', 'false') }}";{% endif %}
+
+Unattended-Upgrade::AutoFixInterruptedDpkg "{{ updates_autofix | ternary('true', 'false') }}";
+
+Unattended-Upgrade::MinimalSteps "{{ updates_minimal_steps | ternary('true', 'false') }}";
+
+Unattended-Upgrade::InstallOnShutdown "{{ updates_install_on_shutdown | ternary('true', 'false') }}";
+
+Unattended-Upgrade::Mail "{{ updates_email_from }}";
+
+Unattended-Upgrade::MailOnlyOnError "{{ updates_mail_only_on_error | ternary('true', 'false') }}";
+
+Unattended-Upgrade::Remove-Unused-Kernel-Packages "{{ updates_remove_unused_kernels | ternary('true', 'false') }}";
+
+Unattended-Upgrade::Remove-Unused-Dependencies "{{ updates_remove_unused_dependencies | ternary('true', 'false') }}";
+
+{% if updates_automatic_reboot | bool %}
+Unattended-Upgrade::Automatic-Reboot "{{ updates_automatic_reboot | ternary('true', 'false') }}";
+
+Unattended-Upgrade::Automatic-Reboot-WithUsers "{{ updates_automatic_reboot_with_users | ternary('true', 'false') }}";
+
+Unattended-Upgrade::Automatic-Reboot-Time "{{ updates_automatic_reboot }}";
+{% endif -%}
+{% if updates_dl_limit > 0 %}
+
+Acquire::http::Dl-Limit "{{ updates_dl_limit }}";
+{% endif %}
+
+Unattended-Upgrade::SyslogEnable "{{ updates_syslog | ternary('true', 'false') }}";
+
+Unattended-Upgrade::SyslogFacility "{{ updates_syslog_facility }}";
+
+Unattended-Upgrade::OnlyOnACPower "{{ updates_on_ac_only | ternary('true', 'false') }}";
+
+Unattended-Upgrade::Skip-Updates-On-Metered-Connections "{{ updates_unmetered | ternary('true', 'false') }}";

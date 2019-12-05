@@ -1,0 +1,67 @@
+---
+# role: ansible-role-updates
+# file: molecule/vbox/molecule.yml
+
+dependency:
+  name: galaxy
+driver:
+  name: vagrant
+  provider:
+    name: virtualbox
+    type: virtualbox
+lint:
+  name: yamllint
+  options:
+    config-file: molecule/shared/yamllint.yml
+platforms:
+  - name: updates-centos7
+    box: "centos/7"
+    cpus: 2
+    memory: 1024
+  - name: updates-centos8
+    box: "centos/8"
+    cpus: 2
+    memory: 1024
+  - name: updates-debian9
+    box: "debian/stretch64"
+    cpus: 2
+    memory: 1024
+  - name: updates-debian10
+    box: "debian/buster64"
+    cpus: 2
+    memory: 1024
+  - name: updates-ubuntu1604
+    box: "ubuntu/xenial64"
+    cpus: 2
+    memory: 1024
+  - name: updates-ubuntu1804
+    box: "ubuntu/bionic64"
+    cpus: 2
+    memory: 1024
+provisioner:
+  name: ansible
+  log: True
+  lint:
+    name: ansible-lint
+  playbooks:
+    prepare: prepare.yml
+    converge: ../shared/playbook.yml
+  inventory:
+    group_vars:
+      all:
+        updates_enabled: True
+        updates_blacklist:
+          - 'vim'
+        updates_emit_via: 'stdio'
+scenario:
+  name: vbox
+verifier:
+  name: testinfra
+  env:
+    PYTHONWARNINGS: "ignore"
+  directory: ../tests
+  options:
+    v: True
+    sudo: True
+  lint:
+    name: flake8

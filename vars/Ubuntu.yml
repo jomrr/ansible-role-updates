@@ -1,0 +1,8 @@
+---
+# role: ansible-role-updates
+# file: vars/Ubuntu.yml
+
+updates_packages:
+  - apt-listchanges
+  - unattended-upgrades
+  - update-notifier-common

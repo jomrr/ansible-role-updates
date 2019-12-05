@@ -1,0 +1,9 @@
+# 20auto-upgrades - Managed by Ansible, please do not edit manually.
+# vim: ft=conf
+#
+# {{ ansible_managed }}
+
+APT::Periodic::Update-Package-Lists "{{ updates_packages_lists }}";                                          
+APT::Periodic::Download-Upgradeable-Packages "{{ updates_download | ternary(1, 0) }}";                                 
+APT::Periodic::Unattended-Upgrade "{{ updates_apply | ternary(1, 0) }}";                                            
+APT::Periodic::AutocleanInterval "{{ updates_autoclean_interval }}";

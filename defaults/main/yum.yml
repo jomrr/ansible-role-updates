@@ -1,0 +1,17 @@
+---
+# role: ansible-role-updates
+# file: defaults/main/yum.yml
+
+# update_cmd for yum, default installs als updates
+updates_yum_update_cmd: 'default'
+
+# override yum.conf settings, e.g. debuglevel
+# e.g. - { debuglevel: -2 }
+updates_yum_base: []
+
+# Whether a message should be emitted when updates are available,
+# were downloaded, or applied.
+updates_yum_update_message: False
+
+# output width of the emitted message, default 80
+updates_yum_message_output_width: 80

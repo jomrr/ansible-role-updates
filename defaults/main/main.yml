@@ -1,0 +1,35 @@
+---
+# role: ansible-role-updates
+# file: defaults/main/main.yml
+
+# The role is disabled by default, so you do not get in trouble.
+# Checked in tasks/main.yml which includes tasks.yml if enabled.
+updates_enabled: False
+
+# download upgradeable packages
+updates_download: True
+
+# apply downloaded upgrades
+updates_apply: True
+
+# blacklisted packages, that will not be upgraded (regexp possible)
+updates_blacklist: []
+
+# random sleep in minutes for dnf and yum
+updates_random_sleep: 120
+
+# emitters for dnf/yum, can be empty, 'None', 'stdio', 'email'
+updates_emit_via: 'None'
+
+# update email from
+updates_email_from: 'root'
+
+# update email to
+updates_email_to:
+  - 'root'
+
+# update email host
+updates_email_host: 'localhost'
+
+# system name in emails for dnf/yum, defaults to hostname
+updates_system_name: ''
