@@ -12,7 +12,7 @@ def test_automatic_updates(host):
     debian_cmd = debian_prefix + 'sudo unattended-upgrade --dry-run'
     rh_path = '/usr/bin/dnf-automatic'
     rh_args = ' --no-installupdates --no-downloadupdates'
-    rh_cmd = rh_path + rh_args
+    rh_cmd = 'sudo ' + rh_path + rh_args
 
     if os == 'centos':
         assert host.file("/etc/os-release").contains("CentOS")
