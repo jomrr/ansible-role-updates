@@ -1,4 +1,4 @@
-# ansible-role-updates
+# ansible-role-updates ![GitHub](https://img.shields.io/github/license/jam82/ansible-role-updates) [![Build Status](https://travis-ci.org/jam82/ansible-role-updates.svg?branch=master)](https://travis-ci.org/jam82/ansible-role-updates)
 
 Ansible role for configuring automatic updates.
 
@@ -15,6 +15,7 @@ On Debian-based systems it additionally will:
 
 * CentOS 7, 8
 * Debian 9, 10
+* Oracle 7, 8
 * Raspbian 9, 10
 * Ubuntu 16.04, 18.04
 
