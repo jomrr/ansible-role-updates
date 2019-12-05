@@ -24,12 +24,12 @@ Ansible 2.7 or higher is recommended.
 
 ## Variables
 
-Variables for this
+Variables and defaults for this role:
 
 | Variables affecting multiple package managers |
 | |
 | variable | default | affects pkg_mgr | description |
-| -------- | ---------------------------------- | ----------- |
+| -------- | ------- | ----------------| ----------- |
 | updates_enabled | False | all | Determine whether role is enabled (True) or not (False) |
 | updates_apply | True | all | apply downloaded upgrades |
 | updates_blacklist | [] | all | List of blacklisted packages, that will not be upgraded (regexp possible) |
@@ -40,11 +40,11 @@ Variables for this
 | updates_emit_via | 'None' | dnf, yum | Emitters, can be empty, 'None', 'stdio', 'email' |
 | updates_random_sleep | 120 | dnf, yum | Random sleep in minutes for dnf and yum |
 | updates_system_name | '' | dnf, yum | System name in E-Mails, defaults to hostname if empty |
-| |
-| Variables affecting unattended-upgrades only |
-| |
-| variable | default | affects pkg_mgr | description |
-| -------- | ---------------------------------- | ----------- |
+
+### Variables affecting **unattended-upgrades** only |
+
+| variable | default | pkg_mgr | description |
+| -------- | ------- | ------- | ----------- |
 | updates_autoclean_interval | 1 | apt | Autoclean every n days |
 | updates_autofix | True | apt | Autofix interrupted updates |
 | updates_automatic_reboot | True | apt | Automatic reboot, if needed |
@@ -66,23 +66,23 @@ Variables for this
 | updates_syslog | True | apt | Log to syslog |
 | updates_syslog_facility | 'daemon' | apt | Syslog facility to use |
 | updates_unmetered | True | apt | Only run on unmetered connections |
-| |
-| Variables affecting dnf-automatic only |
-| |
-| variable | default | affects pkg_mgr | description |
-| -------- | ---------------------------------- | ----------- |
+
+### Variables affecting **dnf-automatic** only
+
+| variable | default | pkg_mgr | description |
+| -------- | ------- | ------- | ----------- |
 | updates_dnf_base | [] | dnf | Override dnf.conf settings, e.g. - { debuglevel: 1 } |
 | updates_dnf_command_format | '' | dnf | Format of command as python format string in str.format(), e.g. "cat" |
 | updates_dnf_email_command_format | '' | dnf | Format of mail command as python format string in str.format(), e.g. "mail -s {subject} -r {email_from} {email_to}" |
 | updates_dnf_email_stdin_format | '' | dnf | Contents of stdin to pass to the email command, e.g. "{body}" |
 | updates_dnf_stdin_format | '' | dnf | Contents of stdin to pass to the command, e.g. "{body}" |
 | updates_dnf_update_cmd | 'default' | dnf | The update_cmd for dnf, 'default' installs all, 'security' only security updates |
-| |
-| Variables affecting yum-cron only |
-| |
-| variable | default | affects pkg_mgr | description |
-| -------- | ---------------------------------- | ----------- |
-| updates_yum_base | [] | yum | Override yum.conf settings, e.g. debuglevel, e.g. - { debuglevel: -2 } |
+
+### Variables affecting **yum-cron** only
+
+| variable | default | pkg_mgr | description |
+| -------- | ------- | ------- | ----------- |
+| updates_yum_base | [] | yum | Override yum.conf settings, e.g. debuglevel, e.g. `- { debuglevel: -2 }` |
 | updates_yum_message_output_width | 80 | yum | Output width of the emitted message, default 80 |
 | updates_yum_update_cmd | 'default' | yum | Update_cmd for yum, 'default installs als updates' |
 | updates_yum_update_message | False | yum | Whether a message should be emitted when updates are available, were downloaded, or applied |
