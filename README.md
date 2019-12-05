@@ -4,9 +4,9 @@ Ansible role for configuring automatic updates.
 
 The defaults of this role will install all available updates daily.
 
-On Debian-based systems it additionalyy will:
+On Debian-based systems it additionally will:
 
-* reboot at 04:00 a.m., if required and no users are logged in.
+* reboot at 04:00 a.m., if required and no users are logged in
 * autoremove unused kernel packages
 * autofix broken packages
 * Send mail to root, only on error
