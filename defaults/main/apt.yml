@@ -31,10 +31,10 @@ updates_install_on_shutdown: False
 updates_mail_only_on_error: True
 
 # remove unused kernels
-updates_remove_unused_kernels: True
+updates_remove_kernels: True
 
 # remove unused dependencies
-updates_remove_unused_dependencies: False
+updates_remove_dependencies: False
 
 # automatic reboot
 updates_reboot: True

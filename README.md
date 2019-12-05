@@ -61,8 +61,8 @@ Variables and defaults for this role:
 | updates_reboot | True | apt | Automatic reboot, if needed |
 | updates_reboot_with_users | False | apt | True = reboot with users logged in, False = do not reboot with logged in users |
 | updates_reboot_time | "04:00" | apt | Time for automatic reboot, 24h format |
-| updates_remove_unused_dependencies | False | apt | Autoremove unused dependencies |
-| updates_remove_unused_kernels | True | apt | Autoremove unused Kernels |
+| updates_remove_dependencies | False | apt | Autoremove unused dependencies |
+| updates_remove_kernels | True | apt | Autoremove unused Kernels |
 | updates_syslog | True | apt | Log to syslog |
 | updates_syslog_facility | 'daemon' | apt | Syslog facility to use |
 | updates_unmetered | True | apt | Only run on unmetered connections |

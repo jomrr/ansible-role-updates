@@ -35,9 +35,9 @@ Unattended-Upgrade::Mail "{{ updates_email_from }}";
 
 Unattended-Upgrade::MailOnlyOnError "{{ updates_mail_only_on_error | ternary('true', 'false') }}";
 
-Unattended-Upgrade::Remove-Unused-Kernel-Packages "{{ updates_remove_unused_kernels | ternary('true', 'false') }}";
+Unattended-Upgrade::Remove-Unused-Kernel-Packages "{{ updates_remove_kernels | ternary('true', 'false') }}";
 
-Unattended-Upgrade::Remove-Unused-Dependencies "{{ updates_remove_unused_dependencies | ternary('true', 'false') }}";
+Unattended-Upgrade::Remove-Unused-Dependencies "{{ updates_remove_dependencies | ternary('true', 'false') }}";
 
 {% if updates_reboot | bool %}
 Unattended-Upgrade::Automatic-Reboot "{{ updates_reboot | ternary('true', 'false') }}";
