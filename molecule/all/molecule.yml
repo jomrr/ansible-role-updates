@@ -26,7 +26,7 @@ platforms:
     tmpfs:
       - /tmp
       - /run
-  - name: updates-amazonlinux
+  - name: updates-amazon
     image: "jam82/molecule-amazonlinux:latest"
     pre_build_image: True
     privileged: True
@@ -36,7 +36,7 @@ platforms:
     volumes:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
   - name: updates-arch
-    image: "jam82/molecule-arch:latest"
+    image: "jam82/molecule-archlinux:latest"
     pre_build_image: True
     privileged: True
     tmpfs:
@@ -105,7 +105,7 @@ platforms:
       - /run
     volumes:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
-  - name: updates-opensuse
+  - name: updates-suse
     image: "jam82/molecule-opensuse:latest"
     pre_build_image: True
     privileged: True
@@ -114,7 +114,7 @@ platforms:
       - /run
     volumes:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
-  - name: updates-opensuse-tumbleweed
+  - name: updates-suse-tumbleweed
     image: "jam82/molecule-opensuse:tumbleweed"
     pre_build_image: True
     privileged: True
@@ -123,14 +123,14 @@ platforms:
       - /run
     volumes:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
-  - name: updates-oraclelinux6
+  - name: updates-oracle6
     image: "jam82/molecule-oraclelinux:6"
     pre_build_image: True
     privileged: True
     tmpfs:
       - /tmp
       - /run
-  - name: updates-oraclelinux7
+  - name: updates-oracle7
     image: "jam82/molecule-oraclelinux:7"
     pre_build_image: True
     privileged: True
@@ -139,7 +139,7 @@ platforms:
       - /run
     volumes:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
-  - name: updates-oraclelinux8
+  - name: updates-oracle8
     image: "jam82/molecule-oraclelinux:8"
     pre_build_image: True
     privileged: True
@@ -148,7 +148,7 @@ platforms:
       - /run
     volumes:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
-  - name: updates-oraclelinux
+  - name: updates-oracle
     image: "jam82/molecule-oraclelinux:latest"
     pre_build_image: True
     privileged: True
@@ -190,7 +190,6 @@ provisioner:
   playbooks:
     prepare: ../resources/playbooks/prepare.yml
     converge: ../resources/playbooks/converge.yml
-  inventory:
 verifier:
   name: testinfra
   env:
