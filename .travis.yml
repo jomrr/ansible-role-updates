@@ -12,7 +12,6 @@ services: docker
 
 env:
   matrix:
-    - MOLECULE_DIST: 'jam82/molecule-alpine:latest'
     - MOLECULE_DIST: 'jam82/molecule-centos:7'
     - MOLECULE_DIST: 'jam82/molecule-centos:8'
     - MOLECULE_DIST: 'jam82/molecule-debian:9'
