@@ -17,8 +17,8 @@ On Debian-based systems it additionally will:
 
 - CentOS 7, 8
 - Debian 9, 10
+- Fedora 31
 - Oracle 7, 8
-- Raspbian 9, 10
 - Ubuntu 16.04, 18.04, 20.04
 
 ## Requirements
