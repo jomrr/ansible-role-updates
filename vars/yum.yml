@@ -9,6 +9,6 @@ updates_packages:
 updates_templates:
   - 'etc/yum/yum-cron.conf'
 
-updates_service: 'yum-cron'
+updates_service: 'yum-cron.service'
 
 updates_validate: '/bin/true %s'

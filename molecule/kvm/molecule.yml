@@ -18,16 +18,24 @@ lint: |
   ansible-lint
   flake8
 platforms:
-  - name: updates-arch
-    box: "archlinux/archlinux"
+  - name: updates-centos7
+    box: "centos/7"
   - name: updates-centos8
     box: "centos/8"
+  - name: updates-debian9
+    box: "debian/stretch64"
   - name: updates-debian10
     box: "debian/buster64"
   - name: updates-fedora31
     box: "fedora/31-cloud-base"
+  - name: updates-oracle7
+    box: "generic/oracle7"
+  - name: updates-oracle8
+    box: "centos/oracle8"
   - name: updates-ubuntu1804
     box: "generic/ubuntu1804"
+  - name: updates-ubuntu2004
+    box: "generic/ubuntu2004"
 provisioner:
   name: ansible
   log: True

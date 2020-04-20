@@ -12,16 +12,18 @@ lint: |
   ansible-lint
   flake8
 platforms:
-  - name: updates-default
-    image: ${MOLECULE_DIST:-"jam82/molecule-ubuntu:18.04"}
-    command: ${MOLECULE_DOCKER_CMD:-""}
+  - name: updates-amazon
+    image: "jam82/molecule-amazonlinux:latest"
+    override_command: False
     pre_build_image: True
-    tty: False
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
     tmpfs:
       - /tmp
       - /run
-    volumes:
-      - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
+    capabilities:
+      - SYS_ADMIN
+    tty: True
 provisioner:
   name: ansible
   log: True
