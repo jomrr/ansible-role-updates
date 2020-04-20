@@ -4,4 +4,4 @@
 
 - name: "Import tasks for role ansible-role-updates"
   import_tasks: tasks.yml
-  when: updates_enabled | bool
+  when: updates_role_enabled | bool
