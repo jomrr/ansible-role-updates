@@ -1,0 +1,5 @@
+---
+# role: ansible-role-updates
+# file: molecule/resources/playbooks/vars.yml
+
+updates_role_enabled: True

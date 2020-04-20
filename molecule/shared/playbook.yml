@@ -1,9 +1,0 @@
----
-# role: ansible-role-updates
-# file: molecule/shared/playbook.yml
-
-- name: Converge
-  hosts: all
-  become: True
-  roles:
-    - role: ansible-role-updates

@@ -97,7 +97,7 @@ email_to = {{ updates_email_to | join(' ') }}
 [base]
 # This section overrides dnf.conf
 exclude = {{ updates_blackist | join(' ') }}
-{%- if updates_dnf_base is defined and updates_dnf_base | length %}
+{%- if updates_dnf_base is defined and updates_dnf_base | length > 0 %}
 {%- for base in updates_dnf_base %}
 {{ base.key }}: {{ base.value }}
 {% endfor -%}

@@ -4,113 +4,203 @@
 
 dependency:
   name: galaxy
+  options:
+    role-file: molecule/resources/roles/requirements.yml
 driver:
   name: docker
-lint:
-  name: yamllint
-  options:
-    config-file: molecule/shared/yamllint.yml
+lint: |
+  set -e
+  yamllint .
+  ansible-lint
+  flake8
 platforms:
-  - name: updates-amazon
-    image: "jam82/amazon-molecule:latest"
-    command: "/usr/lib/systemd/systemd"
+  - name: updates-alpine311
+    image: "jam82/molecule-alpine:3.11"
     pre_build_image: True
     privileged: True
+    tmpfs:
+      - /tmp
+      - /run
+  - name: updates-alpine
+    image: "jam82/molecule-alpine:latest"
+    pre_build_image: True
+    privileged: True
+    tmpfs:
+      - /tmp
+      - /run
+  - name: updates-amazonlinux
+    image: "jam82/molecule-amazonlinux:latest"
+    pre_build_image: True
+    privileged: True
+    tmpfs:
+      - /tmp
+      - /run
     volumes:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
-  - name: updates-centos7
-    image: "jam82/centos-molecule:7"
-    command: "/usr/lib/systemd/systemd"
+  - name: updates-arch
+    image: "jam82/molecule-arch:latest"
     pre_build_image: True
     privileged: True
+    tmpfs:
+      - /tmp
+      - /run
+    volumes:
+      - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
+  - name: updates-centos6
+    image: "jam82/molecule-centos:6"
+    pre_build_image: True
+    privileged: True
+    tmpfs:
+      - /tmp
+      - /run
+  - name: updates-centos7
+    image: "jam82/molecule-centos:7"
+    pre_build_image: True
+    privileged: True
+    tmpfs:
+      - /tmp
+      - /run
     volumes:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
   - name: updates-centos8
-    image: "jam82/centos-molecule:8"
-    command: "/usr/lib/systemd/systemd"
+    image: "jam82/molecule-centos:8"
     pre_build_image: True
     privileged: True
+    tmpfs:
+      - /tmp
+      - /run
     volumes:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
   - name: updates-debian9
-    image: "jam82/debian-molecule:9"
-    command: "/lib/systemd/systemd"
+    image: "jam82/molecule-debian:9"
     pre_build_image: True
     privileged: True
+    tmpfs:
+      - /tmp
+      - /run
     volumes:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
   - name: updates-debian10
-    image: "jam82/debian-molecule:10"
-    command: "/lib/systemd/systemd"
+    image: "jam82/molecule-debian:10"
     pre_build_image: True
     privileged: True
+    tmpfs:
+      - /tmp
+      - /run
     volumes:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
-  - name: updates-oracle7
-    image: "jam82/oracle-molecule:7"
-    command: "/usr/lib/systemd/systemd"
+  - name: updates-debian
+    image: "jam82/molecule-debian:latest"
     pre_build_image: True
     privileged: True
+    tmpfs:
+      - /tmp
+      - /run
     volumes:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
-  - name: updates-oracle8
-    image: "jam82/oracle-molecule:8"
-    command: "/usr/lib/systemd/systemd"
+  - name: updates-opensuse15
+    image: "jam82/molecule-opensuse:15"
     pre_build_image: True
     privileged: True
+    tmpfs:
+      - /tmp
+      - /run
+    volumes:
+      - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
+  - name: updates-opensuse
+    image: "jam82/molecule-opensuse:latest"
+    pre_build_image: True
+    privileged: True
+    tmpfs:
+      - /tmp
+      - /run
+    volumes:
+      - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
+  - name: updates-opensuse-tumbleweed
+    image: "jam82/molecule-opensuse:tumbleweed"
+    pre_build_image: True
+    privileged: True
+    tmpfs:
+      - /tmp
+      - /run
+    volumes:
+      - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
+  - name: updates-oraclelinux6
+    image: "jam82/molecule-oraclelinux:6"
+    pre_build_image: True
+    privileged: True
+    tmpfs:
+      - /tmp
+      - /run
+  - name: updates-oraclelinux7
+    image: "jam82/molecule-oraclelinux:7"
+    pre_build_image: True
+    privileged: True
+    tmpfs:
+      - /tmp
+      - /run
+    volumes:
+      - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
+  - name: updates-oraclelinux8
+    image: "jam82/molecule-oraclelinux:8"
+    pre_build_image: True
+    privileged: True
+    tmpfs:
+      - /tmp
+      - /run
+    volumes:
+      - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
+  - name: updates-oraclelinux
+    image: "jam82/molecule-oraclelinux:latest"
+    pre_build_image: True
+    privileged: True
+    tmpfs:
+      - /tmp
+      - /run
     volumes:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
   - name: updates-ubuntu1604
-    image: "jam82/ubuntu-molecule:16.04"
-    command: "/lib/systemd/systemd"
+    image: "jam82/molecule-ubuntu:16.04"
     pre_build_image: True
     privileged: True
+    tmpfs:
+      - /tmp
+      - /run
     volumes:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
   - name: updates-ubuntu1804
-    image: "jam82/ubuntu-molecule:18.04"
-    command: "/lib/systemd/systemd"
+    image: "jam82/molecule-ubuntu:18.04"
     pre_build_image: True
     privileged: True
+    tmpfs:
+      - /tmp
+      - /run
     volumes:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
   - name: updates-ubuntu
-    image: "jam82/ubuntu-molecule:latest"
-    command: "/lib/systemd/systemd"
+    image: "jam82/molecule-ubuntu:latest"
     pre_build_image: True
     privileged: True
+    tmpfs:
+      - /tmp
+      - /run
     volumes:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
 provisioner:
   name: ansible
   log: True
-  lint:
-    name: ansible-lint
   playbooks:
-    prepare: ../shared/prepare.yml
-    converge: ../shared/playbook.yml
+    prepare: ../resources/playbooks/prepare.yml
+    converge: ../resources/playbooks/converge.yml
   inventory:
     group_vars:
       all:
-        updates_enabled: True
-scenario:
-  name: all
-  test_sequence:
-    - lint
-    - destroy
-    - syntax
-    - create
-    - converge
-    - idempotence
-    - verify
-    - destroy
+        updates_role_enabled: True
 verifier:
   name: testinfra
   env:
     PYTHONWARNINGS: "ignore"
-  directory: ../tests
+  directory: ../resources/tests
   options:
     v: True
     sudo: True
-  lint:
-    name: flake8

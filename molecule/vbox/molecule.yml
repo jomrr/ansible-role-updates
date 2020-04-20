@@ -4,34 +4,37 @@
 
 dependency:
   name: galaxy
+  options:
+    role-file: molecule/resources/roles/requirements.yml
 driver:
   name: vagrant
   provider:
     name: virtualbox
     type: virtualbox
-lint:
-  name: yamllint
-  options:
-    config-file: molecule/shared/yamllint.yml
+lint: |
+  set -e
+  yamllint .
+  ansible-lint
+  flake8
 platforms:
-  - name: updates-centos7
-    box: "centos/7"
+  - name: updates-alpine310
+    box: "generic/alpine310"
+    cpus: 2
+    memory: 1024
+  - name: updates-arch
+    box: "archlinux/archlinux"
     cpus: 2
     memory: 1024
   - name: updates-centos8
     box: "centos/8"
     cpus: 2
     memory: 1024
-  - name: updates-debian9
-    box: "debian/stretch64"
-    cpus: 2
-    memory: 1024
   - name: updates-debian10
     box: "debian/buster64"
     cpus: 2
     memory: 1024
-  - name: updates-ubuntu1604
-    box: "ubuntu/xenial64"
+  - name: updates-fedora31
+    box: "fedora/31-cloud-base"
     cpus: 2
     memory: 1024
   - name: updates-ubuntu1804
@@ -41,27 +44,18 @@ platforms:
 provisioner:
   name: ansible
   log: True
-  lint:
-    name: ansible-lint
   playbooks:
-    prepare: prepare.yml
-    converge: ../shared/playbook.yml
+    prepare: ../resources/playbooks/prepare.yml
+    converge: ../resources/playbooks/converge.yml
   inventory:
     group_vars:
       all:
-        updates_enabled: True
-        updates_blacklist:
-          - 'vim'
-        updates_emit_via: 'stdio'
-scenario:
-  name: vbox
+        updates_role_enabled: True
 verifier:
   name: testinfra
   env:
     PYTHONWARNINGS: "ignore"
-  directory: ../tests
+  directory: ../resources/tests
   options:
     v: True
     sudo: True
-  lint:
-    name: flake8
