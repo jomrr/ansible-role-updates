@@ -44,7 +44,7 @@ Unattended-Upgrade::Automatic-Reboot "{{ updates_reboot | ternary('true', 'false
 
 Unattended-Upgrade::Automatic-Reboot-WithUsers "{{ updates_reboot_with_users | ternary('true', 'false') }}";
 
-Unattended-Upgrade::Automatic-Reboot-Time "{{ updates_reboot }}";
+Unattended-Upgrade::Automatic-Reboot-Time "{{ updates_reboot_time }}";
 {% endif -%}
 {% if updates_dl_limit > 0 %}
 
