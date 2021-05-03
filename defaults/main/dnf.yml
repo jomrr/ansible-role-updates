@@ -6,9 +6,9 @@
 updates_dnf_update_cmd: 'default'
 
 # override dnf.conf settings
-# e.g. - { debuglevel: 1 }
+# e.g. debuglevel: 1
 updates_dnf_base:
-  - { debuglevel: 1 }
+  debuglevel: 1
 
 # format of command as python format string in str.format(), e.g. "cat"
 updates_dnf_command_format: ''

@@ -1,6 +1,6 @@
 # ansible-role-updates
 
-![GitHub](https://img.shields.io/github/license/jam82/ansible-role-updates) [![Build Status](https://travis-ci.org/jam82/ansible-role-updates.svg?branch=master)](https://travis-ci.org/jam82/ansible-role-updates)
+![GitHub](https://img.shields.io/github/license/jam82/ansible-role-updates) [![Build Status](https://travis-ci.org/jam82/ansible-role-updates.svg?branch=main)](https://travis-ci.org/jam82/ansible-role-updates)
 
 **Ansible role for configuring automatic updates.**
 
@@ -15,21 +15,24 @@ On Debian-based systems it additionally will:
 
 ## Supported Platforms
 
-- CentOS 7, 8
-- Debian 9, 10
-- Fedora 31
-- Oracle 7, 8
-- Ubuntu 16.04, 18.04, 20.04
+- CentOS
+- Debian
+- Fedora
+- OracleLinux
+- Raspbian
+- Ubuntu
 
 ## Requirements
 
-Ansible 2.8 or higher is recommended.
+Ansible 2.9 or higher.
 
 ## Variables
 
 Variables and defaults for this role:
 
-### Variables affecting multiple package managers
+### defaults/main/main.yml
+
+Variables affecting multiple package managers
 
 ```yaml
 ---
@@ -38,13 +41,13 @@ Variables and defaults for this role:
 
 # The role is disabled by default, so you do not get in trouble.
 # Checked in tasks/main.yml which includes tasks.yml if enabled.
-updates_role_enabled: False
+updates_role_enabled: false
 
 # download upgradeable packages
-updates_download: True
+updates_download: true
 
 # apply downloaded upgrades
-updates_apply: True
+updates_apply: true
 
 # blacklisted packages, that will not be upgraded (regexp possible)
 updates_blacklist: []
@@ -69,7 +72,9 @@ updates_email_host: 'localhost'
 updates_system_name: ''
 ```
 
-### Variables affecting **unattended-upgrades** only
+### defaults/main/apt.yml
+
+Variables affecting **unattended-upgrades** only
 
 ```yaml
 ---
@@ -85,35 +90,36 @@ updates_packages_lists: 1
 # allowed_origins for debian based distros
 updates_origins:
   - "origin={{ ansible_distribution }},codename={{ ansible_distribution_release }}"
+  - "origin={{ ansible_distribution }},codename={{ ansible_distribution_release }}-backports"
   - "origin={{ ansible_distribution }},codename={{ ansible_distribution_release }}-updates"
   - "origin={{ ansible_distribution }},codename={{ ansible_distribution_release }}-security"
   - "origin={{ ansible_distribution }},codename={{ ansible_distribution_release }},l={{ ansible_distribution }}-Security"
 
 # update ubuntu dev release
-updates_dev_release: False
+updates_dev_release: false
 
 # autofix interrupted updates, should be true to continue getting updates
-updates_autofix: True
+updates_autofix: true
 
 # split the upgrade into the smallest possible chunks so that they can be interrupted with SIGTERM
-updates_minimal_steps: True
+updates_minimal_steps: true
 
 # install updates on shutdown only
-updates_install_on_shutdown: False
+updates_install_on_shutdown: false
 
 # only send mail on error
-updates_mail_only_on_error: True
+updates_mail_only_on_error: true
 
 # remove unused kernels
-updates_remove_kernels: True
+updates_remove_kernels: true
 
 # remove unused dependencies
-updates_remove_dependencies: False
+updates_remove_dependencies: false
 
 # automatic reboot
-updates_reboot: True
+updates_reboot: true
 
-updates_reboot_with_users: False
+updates_reboot_with_users: false
 
 # time for automatic reboot
 updates_reboot_time: "04:00"
@@ -122,19 +128,21 @@ updates_reboot_time: "04:00"
 updates_dl_limit: 0
 
 # log to syslog
-updates_syslog: True
+updates_syslog: true
 
 # syslog facility to use
 updates_syslog_facility: 'daemon'
 
 # run on ac power only
-updates_on_ac_only: True
+updates_on_ac_only: true
 
 # only run on unmetered connections
-updates_unmetered: True
+updates_unmetered: true
 ```
 
-### Variables affecting **dnf-automatic** only
+### defaults/main/dnf.yml
+
+Variables affecting **dnf-automatic** only
 
 ```yaml
 ---
@@ -163,7 +171,9 @@ updates_dnf_email_command_format: ''
 updates_dnf_email_stdin_format: ''
 ```
 
-### Variables affecting **yum-cron** only
+### defaults/main/yum.yml
+
+Variables affecting **yum-cron** only
 
 ```yaml
 ---
@@ -179,7 +189,7 @@ updates_yum_base: []
 
 # Whether a message should be emitted when updates are available,
 # were downloaded, or applied.
-updates_yum_update_message: False
+updates_yum_update_message: false
 
 # output width of the emitted message, default 80
 updates_yum_message_output_width: 80
@@ -196,10 +206,11 @@ None.
 # role: ansible-role-updates
 # file: site.yml
 
-- hosts: updates_systems
-  become: True
+- hosts: all
+  become: true
+  gather_facts: true
   vars:
-    updates_enabled: True
+    updates_enabled: true
   roles:
     - role: ansible-role-updates
 ```

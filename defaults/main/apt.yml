@@ -11,35 +11,36 @@ updates_packages_lists: 1
 # allowed_origins for debian based distros
 updates_origins:
   - "origin={{ ansible_distribution }},codename={{ ansible_distribution_release }}"
+  - "origin={{ ansible_distribution }},codename={{ ansible_distribution_release }}-backports"
   - "origin={{ ansible_distribution }},codename={{ ansible_distribution_release }}-updates"
   - "origin={{ ansible_distribution }},codename={{ ansible_distribution_release }}-security"
   - "origin={{ ansible_distribution }},codename={{ ansible_distribution_release }},l={{ ansible_distribution }}-Security"
 
 # update ubuntu dev release
-updates_dev_release: False
+updates_dev_release: false
 
 # autofix interrupted updates, should be true to continue getting updates
-updates_autofix: True
+updates_autofix: true
 
 # split the upgrade into the smallest possible chunks so that they can be interrupted with SIGTERM
-updates_minimal_steps: True
+updates_minimal_steps: true
 
 # install updates on shutdown only
-updates_install_on_shutdown: False
+updates_install_on_shutdown: false
 
 # only send mail on error
-updates_mail_only_on_error: True
+updates_mail_only_on_error: true
 
 # remove unused kernels
-updates_remove_kernels: True
+updates_remove_kernels: true
 
 # remove unused dependencies
-updates_remove_dependencies: False
+updates_remove_dependencies: false
 
 # automatic reboot
-updates_reboot: True
+updates_reboot: true
 
-updates_reboot_with_users: False
+updates_reboot_with_users: false
 
 # time for automatic reboot
 updates_reboot_time: "04:00"
@@ -48,13 +49,13 @@ updates_reboot_time: "04:00"
 updates_dl_limit: 0
 
 # log to syslog
-updates_syslog: True
+updates_syslog: true
 
 # syslog facility to use
 updates_syslog_facility: 'daemon'
 
 # run on ac power only
-updates_on_ac_only: True
+updates_on_ac_only: true
 
 # only run on unmetered connections
-updates_unmetered: True
+updates_unmetered: true

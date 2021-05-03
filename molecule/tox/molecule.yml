@@ -1,29 +1,28 @@
 ---
 # role: ansible-role-updates
-# file: molecule/podman/molecule.yml
+# file: molecule/tox/molecule.yml
 
 dependency:
   name: galaxy
+  options:
+    role-file: requirements.yml
 driver:
-  name: podman
+  name: docker
 lint: |
   set -e
   yamllint .
   ansible-lint
-  flake8
 platforms:
-  - name: amazon-updates
-    image: "jam82/molecule-debian:latest"
-    override_command: false
+  - name: updates-${TOX_ENVNAME:-"default"}
+    image: ${MOLECULE_IMG:-"jam82/molecule-debian:latest"}
+    command: ${MOLECULE_IMG_CMD:-""}
     pre_build_image: true
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    privileged: true
     tmpfs:
       - /tmp
       - /run
-    capabilities:
-      - SYS_ADMIN
-    tty: true
+    volumes:
+      - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
 provisioner:
   name: ansible
   log: true

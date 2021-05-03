@@ -15,41 +15,40 @@ lint: |
   ansible-lint
   flake8
 platforms:
-  - name: updates-alpine310
-    box: "generic/alpine310"
-    cpus: 2
-    memory: 1024
-  - name: updates-arch
-    box: "archlinux/archlinux"
-    cpus: 2
-    memory: 1024
-  - name: updates-centos8
+  - name: centos8-updates
     box: "centos/8"
     cpus: 2
     memory: 1024
-  - name: updates-debian10
+  - name: debian10-updates
     box: "debian/buster64"
     cpus: 2
     memory: 1024
-  - name: updates-fedora31
-    box: "fedora/31-cloud-base"
+  - name: debian11-updates
+    box: "debian/bullseye64"
     cpus: 2
     memory: 1024
-  - name: updates-ubuntu1804
+  - name: fedora33-updates
+    box: "fedora/33-cloud-base"
+    cpus: 2
+    memory: 1024
+  - name: ubuntu1804-updates
     box: "ubuntu/bionic64"
+    cpus: 2
+    memory: 1024
+  - name: ubuntu2004-updates
+    box: "ubuntu/focal64"
     cpus: 2
     memory: 1024
 provisioner:
   name: ansible
-  log: True
+  log: true
   playbooks:
     prepare: ../resources/playbooks/prepare.yml
     converge: ../resources/playbooks/converge.yml
+    verify: ../resources/playbooks/verify.yml
+  inventory:
+    group_vars:
+      all:
+        updates_role_enabled: true
 verifier:
-  name: testinfra
-  env:
-    PYTHONWARNINGS: "ignore"
-  directory: ../resources/tests
-  options:
-    v: True
-    sudo: True
+  name: ansible

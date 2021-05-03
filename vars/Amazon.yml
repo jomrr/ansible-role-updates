@@ -1,0 +1,5 @@
+---
+# role: ansible-role-updates
+# file: vars/Amazon.yml
+
+updates_lock_dir: '/var/lock/subsys'

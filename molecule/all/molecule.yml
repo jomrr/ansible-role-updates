@@ -12,131 +12,141 @@ lint: |
   ansible-lint
   flake8
 platforms:
-  - name: updates-amazon
+  - name: amazon-updates
     image: "jam82/molecule-amazonlinux:latest"
-    command: ${MOLECULE_DOCKER_CMD:-""}
-    pre_build_image: True
-    privileged: True
+    command: ""
+    pre_build_image: true
+    privileged: true
     tmpfs:
       - /tmp
       - /run
     volumes:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
-  - name: updates-centos7
+  - name: centos7-updates
     image: "jam82/molecule-centos:7"
-    command: ${MOLECULE_DOCKER_CMD:-""}
-    pre_build_image: True
-    privileged: True
+    command: ""
+    pre_build_image: true
+    privileged: true
     tmpfs:
       - /tmp
       - /run
     volumes:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
-  - name: updates-centos8
+  - name: centos8-updates
     image: "jam82/molecule-centos:8"
-    command: ${MOLECULE_DOCKER_CMD:-""}
-    pre_build_image: True
-    privileged: True
+    command: ""
+    pre_build_image: true
+    privileged: true
     tmpfs:
       - /tmp
       - /run
     volumes:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
-  - name: updates-debian9
+  - name: debian9-updates
     image: "jam82/molecule-debian:9"
-    command: ${MOLECULE_DOCKER_CMD:-""}
-    pre_build_image: True
-    privileged: True
+    command: ""
+    pre_build_image: true
+    privileged: true
     tmpfs:
       - /tmp
       - /run
     volumes:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
-  - name: updates-debian10
+  - name: debian10-updates
     image: "jam82/molecule-debian:10"
-    command: ${MOLECULE_DOCKER_CMD:-""}
-    pre_build_image: True
-    privileged: True
+    command: ""
+    pre_build_image: true
+    privileged: true
     tmpfs:
       - /tmp
       - /run
     volumes:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
-  - name: updates-debian
+  - name: debian-updates
     image: "jam82/molecule-debian:latest"
-    command: ${MOLECULE_DOCKER_CMD:-""}
-    pre_build_image: True
-    privileged: True
+    command: ""
+    pre_build_image: true
+    privileged: true
     tmpfs:
       - /tmp
       - /run
     volumes:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
-  - name: updates-fedora
+  - name: fedora-updates
     image: "jam82/molecule-fedora:latest"
-    command: ${MOLECULE_DOCKER_CMD:-""}
-    pre_build_image: True
-    privileged: True
+    command: ""
+    pre_build_image: true
+    privileged: true
     tmpfs:
       - /tmp
       - /run
     volumes:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
-  - name: updates-oracle7
+  - name: oracle7-updates
     image: "jam82/molecule-oraclelinux:7"
-    command: ${MOLECULE_DOCKER_CMD:-""}
-    pre_build_image: True
-    privileged: True
+    command: ""
+    pre_build_image: true
+    privileged: true
     tmpfs:
       - /tmp
       - /run
     volumes:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
-  - name: updates-oracle8
+  - name: oracle8-updates
     image: "jam82/molecule-oraclelinux:8"
-    command: ${MOLECULE_DOCKER_CMD:-""}
-    pre_build_image: True
-    privileged: True
+    command: ""
+    pre_build_image: true
+    privileged: true
     tmpfs:
       - /tmp
       - /run
     volumes:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
-  - name: updates-oracle
+  - name: oracle-updates
     image: "jam82/molecule-oraclelinux:latest"
-    command: ${MOLECULE_DOCKER_CMD:-""}
-    pre_build_image: True
-    privileged: True
+    command: ""
+    pre_build_image: true
+    privileged: true
     tmpfs:
       - /tmp
       - /run
     volumes:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
-  - name: updates-ubuntu1604
+  - name: ubuntu1604-updates
     image: "jam82/molecule-ubuntu:16.04"
-    command: ${MOLECULE_DOCKER_CMD:-""}
-    pre_build_image: True
-    privileged: True
+    command: ""
+    pre_build_image: true
+    privileged: true
     tmpfs:
       - /tmp
       - /run
     volumes:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
-  - name: updates-ubuntu1804
+  - name: ubuntu1804-updates
     image: "jam82/molecule-ubuntu:18.04"
-    command: ${MOLECULE_DOCKER_CMD:-""}
-    pre_build_image: True
-    privileged: True
+    command: ""
+    pre_build_image: true
+    privileged: true
     tmpfs:
       - /tmp
       - /run
     volumes:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
-  - name: updates-ubuntu
+  - name: ubuntu2004-updates
+    image: "jam82/molecule-ubuntu:20.04"
+    command: ""
+    pre_build_image: true
+    privileged: true
+    tmpfs:
+      - /tmp
+      - /run
+    volumes:
+      - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
+  - name: ubuntu-updates
     image: "jam82/molecule-ubuntu:latest"
-    command: ${MOLECULE_DOCKER_CMD:-""}
-    pre_build_image: True
-    privileged: True
+    command: ""
+    pre_build_image: true
+    privileged: true
     tmpfs:
       - /tmp
       - /run
@@ -144,15 +154,14 @@ platforms:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
 provisioner:
   name: ansible
-  log: True
+  log: true
   playbooks:
     prepare: ../resources/playbooks/prepare.yml
     converge: ../resources/playbooks/converge.yml
+    verify: ../resources/playbooks/verify.yml
+  inventory:
+    group_vars:
+      all:
+        updates_role_enabled: true
 verifier:
-  name: testinfra
-  env:
-    PYTHONWARNINGS: "ignore"
-  directory: ../resources/tests
-  options:
-    v: True
-    sudo: True
+  name: ansible

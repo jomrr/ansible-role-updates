@@ -98,10 +98,8 @@ email_to = {{ updates_email_to | join(' ') }}
 # This section overrides dnf.conf
 exclude = {{ updates_blacklist | join(' ') }}
 {%- if updates_dnf_base is defined and updates_dnf_base | length > 0 %}
-{%- for base_item in updates_dnf_base %}
-{%- for base_key, base_value in base_item.items() %}
-{{ base_key }} = {{ base_value }}
-{% endfor -%}
+{%- for base_item in updates_dnf_base | dict2items %}
+{{ base_item.key }} = {{ base_item.value }}
 {% endfor -%}
 {% endif -%}
 

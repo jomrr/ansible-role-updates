@@ -5,5 +5,5 @@
 - name: "Enable automatic updates"
   service:
     name: "{{ updates_service }}"
-    enabled: True
+    enabled: true
     state: restarted

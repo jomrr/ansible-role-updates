@@ -4,13 +4,13 @@
 
 # The role is disabled by default, so you do not get in trouble.
 # Checked in tasks/main.yml which includes tasks.yml if enabled.
-updates_role_enabled: False
+updates_role_enabled: false
 
 # download upgradeable packages
-updates_download: True
+updates_download: true
 
 # apply downloaded upgrades
-updates_apply: True
+updates_apply: true
 
 # blacklisted packages, that will not be upgraded (regexp possible)
 updates_blacklist: []

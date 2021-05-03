@@ -11,7 +11,7 @@ updates_yum_base: []
 
 # Whether a message should be emitted when updates are available,
 # were downloaded, or applied.
-updates_yum_update_message: False
+updates_yum_update_message: false
 
 # output width of the emitted message, default 80
 updates_yum_message_output_width: 80
