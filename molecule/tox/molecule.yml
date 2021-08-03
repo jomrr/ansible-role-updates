@@ -15,7 +15,7 @@ lint: |
 platforms:
   - name: updates-${TOX_ENVNAME:-"default"}
     image: ${MOLECULE_IMG:-"jam82/molecule-debian:latest"}
-    command: ${MOLECULE_IMG_CMD:-""}
+    command: ""
     pre_build_image: true
     privileged: true
     tmpfs:

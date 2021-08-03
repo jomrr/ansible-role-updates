@@ -14,7 +14,7 @@ lint: |
 platforms:
   - name: amazon-updates
     image: "jam82/molecule-debian:latest"
-    override_command: false
+    override_command: ~
     pre_build_image: true
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro

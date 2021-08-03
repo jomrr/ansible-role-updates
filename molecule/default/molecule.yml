@@ -15,7 +15,7 @@ lint: |
 platforms:
   - name: amazon-updates
     image: "jam82/molecule-amazonlinux:latest"
-    command: ""
+    command: ~
     pre_build_image: true
     privileged: true
     tmpfs:
@@ -25,7 +25,7 @@ platforms:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
   - name: centos-updates
     image: "jam82/molecule-centos:latest"
-    command: ""
+    command: ~
     pre_build_image: true
     privileged: true
     tmpfs:
@@ -35,7 +35,7 @@ platforms:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
   - name: debian-updates
     image: "jam82/molecule-debian:latest"
-    command: ""
+    command: ~
     pre_build_image: true
     privileged: true
     tmpfs:
@@ -45,7 +45,7 @@ platforms:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
   - name: fedora-updates
     image: "jam82/molecule-fedora:latest"
-    command: ""
+    command: ~
     pre_build_image: true
     privileged: true
     tmpfs:
@@ -55,7 +55,7 @@ platforms:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
   - name: oracle-updates
     image: "jam82/molecule-oraclelinux:latest"
-    command: ""
+    command: ~
     pre_build_image: true
     privileged: true
     tmpfs:
@@ -65,7 +65,7 @@ platforms:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
   - name: ubuntu-updates
     image: "jam82/molecule-ubuntu:latest"
-    command: ""
+    command: ~
     pre_build_image: true
     privileged: true
     tmpfs:

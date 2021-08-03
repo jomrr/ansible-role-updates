@@ -14,7 +14,7 @@ lint: |
 platforms:
   - name: amazon-updates
     image: "jam82/molecule-amazonlinux:latest"
-    command: ""
+    command: ~
     pre_build_image: true
     privileged: true
     tmpfs:
@@ -24,7 +24,7 @@ platforms:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
   - name: centos7-updates
     image: "jam82/molecule-centos:7"
-    command: ""
+    command: ~
     pre_build_image: true
     privileged: true
     tmpfs:
@@ -34,7 +34,7 @@ platforms:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
   - name: centos8-updates
     image: "jam82/molecule-centos:8"
-    command: ""
+    command: ~
     pre_build_image: true
     privileged: true
     tmpfs:
@@ -44,7 +44,7 @@ platforms:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
   - name: debian9-updates
     image: "jam82/molecule-debian:9"
-    command: ""
+    command: ~
     pre_build_image: true
     privileged: true
     tmpfs:
@@ -54,7 +54,7 @@ platforms:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
   - name: debian10-updates
     image: "jam82/molecule-debian:10"
-    command: ""
+    command: ~
     pre_build_image: true
     privileged: true
     tmpfs:
@@ -64,7 +64,7 @@ platforms:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
   - name: debian-updates
     image: "jam82/molecule-debian:latest"
-    command: ""
+    command: ~
     pre_build_image: true
     privileged: true
     tmpfs:
@@ -74,7 +74,7 @@ platforms:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
   - name: fedora-updates
     image: "jam82/molecule-fedora:latest"
-    command: ""
+    command: ~
     pre_build_image: true
     privileged: true
     tmpfs:
@@ -84,7 +84,7 @@ platforms:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
   - name: oracle7-updates
     image: "jam82/molecule-oraclelinux:7"
-    command: ""
+    command: ~
     pre_build_image: true
     privileged: true
     tmpfs:
@@ -94,7 +94,7 @@ platforms:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
   - name: oracle8-updates
     image: "jam82/molecule-oraclelinux:8"
-    command: ""
+    command: ~
     pre_build_image: true
     privileged: true
     tmpfs:
@@ -104,7 +104,7 @@ platforms:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
   - name: oracle-updates
     image: "jam82/molecule-oraclelinux:latest"
-    command: ""
+    command: ~
     pre_build_image: true
     privileged: true
     tmpfs:
@@ -114,7 +114,7 @@ platforms:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
   - name: ubuntu1604-updates
     image: "jam82/molecule-ubuntu:16.04"
-    command: ""
+    command: ~
     pre_build_image: true
     privileged: true
     tmpfs:
@@ -124,7 +124,7 @@ platforms:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
   - name: ubuntu1804-updates
     image: "jam82/molecule-ubuntu:18.04"
-    command: ""
+    command: ~
     pre_build_image: true
     privileged: true
     tmpfs:
@@ -134,7 +134,7 @@ platforms:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
   - name: ubuntu2004-updates
     image: "jam82/molecule-ubuntu:20.04"
-    command: ""
+    command: ~
     pre_build_image: true
     privileged: true
     tmpfs:
@@ -144,7 +144,7 @@ platforms:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
   - name: ubuntu-updates
     image: "jam82/molecule-ubuntu:latest"
-    command: ""
+    command: ~
     pre_build_image: true
     privileged: true
     tmpfs:
