@@ -7,9 +7,6 @@ Unattended-Upgrade::Origins-Pattern {
 {% for origin in updates_origins %}
         "{{ origin }}";
 {% endfor %}
-{% if ansible_distribution == "Ubuntu" and updates_origins | length %}
-        "${distro_id}ESM:${distro_codename}";
-{% endif %}
 {% if ansible_lsb.id == "Raspbian" and updates_origins | length %}
         "origin=Raspbian,codename=${distro_codename},label=Raspbian";
         "origin=Raspberry Pi Foundation,codename=${distro_codename},label=Raspberry Pi Foundation";
