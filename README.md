@@ -1,6 +1,6 @@
 # ansible-role-updates
 
-![GitHub](https://img.shields.io/github/license/jam82/ansible-role-updates) [![Build Status](https://travis-ci.org/jam82/ansible-role-updates.svg?branch=main)](https://travis-ci.org/jam82/ansible-role-updates)
+![GitHub](https://img.shields.io/github/license/jam82/ansible-role-updates) ![GitHub last commit](https://img.shields.io/github/last-commit/jam82/ansible-role-updates) ![GitHub issues](https://img.shields.io/github/issues-raw/jam82/ansible-role-updates) ![Travis (.com) branch](https://img.shields.io/travis/com/jam82/ansible-role-updates/main?label=travis) [![Molecule](https://github.com/jam82/ansible-role-updates/actions/workflows/molecule.yml/badge.svg)](https://github.com/jam82/ansible-role-updates/actions/workflows/molecule.yml)
 
 **Ansible role for configuring automatic updates.**
 
@@ -15,12 +15,13 @@ On Debian-based systems it additionally will:
 
 ## Supported Platforms
 
-- CentOS
-- Debian
-- Fedora
-- OracleLinux
-- Raspbian
-- Ubuntu
+| OS Family | Distribution  | Latest | Supported Version(s) | Comment |
+|-----------|---------------|--------|----------------------|---------|
+| Debian    | Debian        | :heavy_check_mark: | 10, 11 | |
+|           | Ubuntu        | :heavy_check_mark: | 18.04, 20.04 | |
+|           | Raspbian      | :heavy_check_mark: | 10, 11 | |
+| RedHat    | CentOS        | :heavy_check_mark: | 7, 8 | |
+|           | Fedora        | :heavy_check_mark: | 33, 34, Rawhide | |
 
 ## Requirements
 

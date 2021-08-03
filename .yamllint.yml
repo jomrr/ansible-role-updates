@@ -1,6 +1,6 @@
 ---
-# role: ansible-role-up
-# file: molecule/shared/yamllint.yml
+# role: ansible-role-updates
+# file: .yamllint.yml
 
 extends: default
 
@@ -36,6 +36,7 @@ rules:
 
 ignore: |
   .cache/
+  .github/
   .tox/
   .vscode/
   .travis.yml
