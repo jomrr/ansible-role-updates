@@ -13,7 +13,7 @@ lint: |
   flake8
 platforms:
   - name: amazon-updates
-    image: "jam82/molecule-amazonlinux:latest"
+    image: "jomrr/molecule-amazonlinux:latest"
     command: ~
     pre_build_image: true
     privileged: true
@@ -23,7 +23,7 @@ platforms:
     volumes:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
   - name: centos7-updates
-    image: "jam82/molecule-centos:7"
+    image: "jomrr/molecule-centos:7"
     command: ~
     pre_build_image: true
     privileged: true
@@ -33,7 +33,7 @@ platforms:
     volumes:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
   - name: centos8-updates
-    image: "jam82/molecule-centos:8"
+    image: "jomrr/molecule-centos:8"
     command: ~
     pre_build_image: true
     privileged: true
@@ -43,7 +43,7 @@ platforms:
     volumes:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
   - name: debian9-updates
-    image: "jam82/molecule-debian:9"
+    image: "jomrr/molecule-debian:9"
     command: ~
     pre_build_image: true
     privileged: true
@@ -53,7 +53,7 @@ platforms:
     volumes:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
   - name: debian10-updates
-    image: "jam82/molecule-debian:10"
+    image: "jomrr/molecule-debian:10"
     command: ~
     pre_build_image: true
     privileged: true
@@ -63,7 +63,7 @@ platforms:
     volumes:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
   - name: debian-updates
-    image: "jam82/molecule-debian:latest"
+    image: "jomrr/molecule-debian:latest"
     command: ~
     pre_build_image: true
     privileged: true
@@ -73,7 +73,7 @@ platforms:
     volumes:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
   - name: fedora-updates
-    image: "jam82/molecule-fedora:latest"
+    image: "jomrr/molecule-fedora:latest"
     command: ~
     pre_build_image: true
     privileged: true
@@ -83,7 +83,7 @@ platforms:
     volumes:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
   - name: oracle7-updates
-    image: "jam82/molecule-oraclelinux:7"
+    image: "jomrr/molecule-oraclelinux:7"
     command: ~
     pre_build_image: true
     privileged: true
@@ -93,7 +93,7 @@ platforms:
     volumes:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
   - name: oracle8-updates
-    image: "jam82/molecule-oraclelinux:8"
+    image: "jomrr/molecule-oraclelinux:8"
     command: ~
     pre_build_image: true
     privileged: true
@@ -103,7 +103,7 @@ platforms:
     volumes:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
   - name: oracle-updates
-    image: "jam82/molecule-oraclelinux:latest"
+    image: "jomrr/molecule-oraclelinux:latest"
     command: ~
     pre_build_image: true
     privileged: true
@@ -113,7 +113,7 @@ platforms:
     volumes:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
   - name: ubuntu1604-updates
-    image: "jam82/molecule-ubuntu:16.04"
+    image: "jomrr/molecule-ubuntu:16.04"
     command: ~
     pre_build_image: true
     privileged: true
@@ -123,7 +123,7 @@ platforms:
     volumes:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
   - name: ubuntu1804-updates
-    image: "jam82/molecule-ubuntu:18.04"
+    image: "jomrr/molecule-ubuntu:18.04"
     command: ~
     pre_build_image: true
     privileged: true
@@ -133,7 +133,7 @@ platforms:
     volumes:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
   - name: ubuntu2004-updates
-    image: "jam82/molecule-ubuntu:20.04"
+    image: "jomrr/molecule-ubuntu:20.04"
     command: ~
     pre_build_image: true
     privileged: true
@@ -143,7 +143,7 @@ platforms:
     volumes:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
   - name: ubuntu-updates
-    image: "jam82/molecule-ubuntu:latest"
+    image: "jomrr/molecule-ubuntu:latest"
     command: ~
     pre_build_image: true
     privileged: true

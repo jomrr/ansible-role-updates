@@ -14,7 +14,7 @@ lint: |
   ansible-lint
 platforms:
   - name: updates-${TOX_ENVNAME:-"default"}
-    image: ${MOLECULE_IMG:-"jam82/molecule-debian:latest"}
+    image: ${MOLECULE_IMG:-"jomrr/molecule-debian:latest"}
     command: ""
     pre_build_image: true
     privileged: true

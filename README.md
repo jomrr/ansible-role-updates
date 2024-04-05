@@ -1,6 +1,6 @@
 # ansible-role-updates
 
-![GitHub](https://img.shields.io/github/license/jam82/ansible-role-updates) ![GitHub last commit](https://img.shields.io/github/last-commit/jam82/ansible-role-updates) ![GitHub issues](https://img.shields.io/github/issues-raw/jam82/ansible-role-updates) ![Travis (.com) branch](https://img.shields.io/travis/com/jam82/ansible-role-updates/main?label=travis) [![Molecule](https://github.com/jam82/ansible-role-updates/actions/workflows/molecule.yml/badge.svg)](https://github.com/jam82/ansible-role-updates/actions/workflows/molecule.yml)
+![GitHub](https://img.shields.io/github/license/jomrr/ansible-role-updates) ![GitHub last commit](https://img.shields.io/github/last-commit/jomrr/ansible-role-updates) ![GitHub issues](https://img.shields.io/github/issues-raw/jomrr/ansible-role-updates) ![Travis (.com) branch](https://img.shields.io/travis/com/jomrr/ansible-role-updates/main?label=travis) [![Molecule](https://github.com/jomrr/ansible-role-updates/actions/workflows/molecule.yml/badge.svg)](https://github.com/jomrr/ansible-role-updates/actions/workflows/molecule.yml)
 
 **Ansible role for configuring automatic updates.**
 
@@ -218,11 +218,11 @@ None.
 
 ## License and Author
 
-- Author:: [jam82](https://github.com/jam82/)
-- Copyright:: 2020, [jam82](https://github.com/jam82/)
+- Author:: [jomrr](https://github.com/jomrr/)
+- Copyright:: 2020, [jomrr](https://github.com/jomrr/)
 
 Licensed under [MIT License](https://opensource.org/licenses/MIT).
-See [LICENSE](https://github.com/jam82/ansible-role-updates/blob/master/LICENSE) file in repository.
+See [LICENSE](https://github.com/jomrr/ansible-role-updates/blob/master/LICENSE) file in repository.
 
 ## References
 

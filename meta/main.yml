@@ -4,13 +4,13 @@
 
 galaxy_info:
   role_name: updates
-  author: jam82
+  author: jomrr
   description: Ansible role for setting up automatic updates.
   company: ''
 
   # If the issue tracker for your role is not on github, uncomment the
   # next line and provide a value
-  issue_tracker_url: https://github.com/jam82/ansible-role-updates/issues
+  issue_tracker_url: https://github.com/jomrr/ansible-role-updates/issues
 
   license: MIT
 

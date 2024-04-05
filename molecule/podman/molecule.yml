@@ -13,7 +13,7 @@ lint: |
   flake8
 platforms:
   - name: amazon-updates
-    image: "jam82/molecule-debian:latest"
+    image: "jomrr/molecule-debian:latest"
     override_command: ~
     pre_build_image: true
     volumes:

@@ -14,7 +14,7 @@ lint: |
   ansible-lint
 platforms:
   - name: amazon-updates
-    image: "jam82/molecule-amazonlinux:latest"
+    image: "jomrr/molecule-amazonlinux:latest"
     command: ~
     pre_build_image: true
     privileged: true
@@ -24,7 +24,7 @@ platforms:
     volumes:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
   - name: centos-updates
-    image: "jam82/molecule-centos:latest"
+    image: "jomrr/molecule-centos:latest"
     command: ~
     pre_build_image: true
     privileged: true
@@ -34,7 +34,7 @@ platforms:
     volumes:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
   - name: debian-updates
-    image: "jam82/molecule-debian:latest"
+    image: "jomrr/molecule-debian:latest"
     command: ~
     pre_build_image: true
     privileged: true
@@ -44,7 +44,7 @@ platforms:
     volumes:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
   - name: fedora-updates
-    image: "jam82/molecule-fedora:latest"
+    image: "jomrr/molecule-fedora:latest"
     command: ~
     pre_build_image: true
     privileged: true
@@ -54,7 +54,7 @@ platforms:
     volumes:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
   - name: oracle-updates
-    image: "jam82/molecule-oraclelinux:latest"
+    image: "jomrr/molecule-oraclelinux:latest"
     command: ~
     pre_build_image: true
     privileged: true
@@ -64,7 +64,7 @@ platforms:
     volumes:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
   - name: ubuntu-updates
-    image: "jam82/molecule-ubuntu:latest"
+    image: "jomrr/molecule-ubuntu:latest"
     command: ~
     pre_build_image: true
     privileged: true
