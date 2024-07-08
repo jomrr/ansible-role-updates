@@ -1,12 +1,12 @@
----
-# role: {{ role_name }}
+# role: jomrr.updates
 # file: molecule/resources/playbooks/verify.yml
+# code: language=ansible-jinja
 
-- name: Verify
+- name: "PLAYBOOK | Verify | updates"
   hosts: all
-  become: true
   gather_facts: false
   tasks:
-    - name: "Assertions"
-      assert:
-        that: true
+    - name: "Assert true"
+      ansible.builtin.assert:
+        that: "true"
+        fail_msg: "This should never fail"

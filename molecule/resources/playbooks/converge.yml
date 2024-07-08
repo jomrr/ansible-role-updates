@@ -1,10 +1,10 @@
----
-# role: ansible-role-updates
+# role: jomrr.updates
 # file: molecule/resources/playbooks/converge.yml
+# code: language=ansible-jinja
 
-- name: Converge
+- name: "PLAYBOOK | Converge | updates"
   hosts: all
   become: true
   gather_facts: true
   roles:
-    - role: '../ansible-role-updates'
+    - role: "{{ lookup('ansible.builtin.env', 'MOLECULE_PROJECT_DIRECTORY') }}"

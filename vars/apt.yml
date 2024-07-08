@@ -1,5 +1,5 @@
 ---
-# role: ansible-role-updates
+# role: jomrr.updates
 # file: vars/apt.yml
 
 updates_packages:

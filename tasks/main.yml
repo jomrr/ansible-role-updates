@@ -1,8 +1,43 @@
 ---
-# role: ansible-role-updates
+# role: jomrr.updates
 # file: tasks/main.yml
 
-- name: "Check if ansible-role-updates is enabled"
-  include_tasks: tasks.yml
-  when: updates_role_enabled | bool
-    and ansible_os_family in ['Debian', 'RedHat']
+- name: "Set pkg_mgr dependent variables"
+  ansible.builtin.include_vars: '{{ ansible_pkg_mgr }}.yml'
+
+- name: "Set distribution dependent variables"
+  ansible.builtin.include_vars: "{{ item }}"
+  vars:
+    params:
+      files:
+        - '{{ ansible_distribution }}-{{ ansible_distribution_major_version }}.yml'
+        - '{{ ansible_distribution }}.yml'
+        - '{{ ansible_os_family }}-{{ ansible_distribution_major_version }}.yml'
+      paths:
+        - 'vars'
+      skip: true
+  loop: "{{ query('first_found', params, errors='ignore') }}"
+
+- name: "Install packages for ansible-role-updates"
+  ansible.builtin.package:
+    name: "{{ updates_packages }}"
+    state: present
+
+- name: "Configure automatic updates"
+  ansible.builtin.template:
+    src: "{{ item }}.j2"
+    dest: "/{{ item }}"
+    owner: root
+    group: root
+    mode: "0644"
+    validate: "{{ updates_validate }}"
+  loop: "{{ updates_templates }}"
+  notify: Enable automatic updates
+
+# missing dir prevents yum-cron from starting in AmazonLinux 2 and RedHat-7
+- name: "Create /var/lock/subsys if missing"
+  ansible.builtin.file:
+    path: "{{ updates_lock_dir }}"
+    state: directory
+    mode: "0755"
+  when: updates_lock_dir is defined

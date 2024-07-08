@@ -1,88 +1,33 @@
 ---
-# role: {{ role_name }}
+# role: jomrr.updates
 # file: molecule/default/molecule.yml
 
+scenario:
+  name: default
 dependency:
   name: galaxy
-  options:
-    role-file: requirements.yml
+  requirements-file: meta/requirements.yml
 driver:
-  name: docker
-lint: |
-  set -e
-  yamllint .
-  ansible-lint
-platforms:
-  - name: amazon-updates
-    image: "jomrr/molecule-amazonlinux:latest"
-    command: ~
-    pre_build_image: true
-    privileged: true
-    tmpfs:
-      - /tmp
-      - /run
-    volumes:
-      - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
-  - name: centos-updates
-    image: "jomrr/molecule-centos:latest"
-    command: ~
-    pre_build_image: true
-    privileged: true
-    tmpfs:
-      - /tmp
-      - /run
-    volumes:
-      - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
-  - name: debian-updates
-    image: "jomrr/molecule-debian:latest"
-    command: ~
-    pre_build_image: true
-    privileged: true
-    tmpfs:
-      - /tmp
-      - /run
-    volumes:
-      - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
-  - name: fedora-updates
-    image: "jomrr/molecule-fedora:latest"
-    command: ~
-    pre_build_image: true
-    privileged: true
-    tmpfs:
-      - /tmp
-      - /run
-    volumes:
-      - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
-  - name: oracle-updates
-    image: "jomrr/molecule-oraclelinux:latest"
-    command: ~
-    pre_build_image: true
-    privileged: true
-    tmpfs:
-      - /tmp
-      - /run
-    volumes:
-      - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
-  - name: ubuntu-updates
-    image: "jomrr/molecule-ubuntu:latest"
-    command: ~
-    pre_build_image: true
-    privileged: true
-    tmpfs:
-      - /tmp
-      - /run
-    volumes:
-      - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
+  name: podman
+lint: set -e; ansible-lint
 provisioner:
   name: ansible
+  config_options:
+    defaults:
+      interpreter_python: auto_silent
+      callback_whitelist: profile_tasks, timer, yaml
+    ssh_connection:
+      pipelining: true
   log: true
   playbooks:
-    prepare: ../resources/playbooks/prepare.yml
     converge: ../resources/playbooks/converge.yml
     verify: ../resources/playbooks/verify.yml
-  inventory:
-    group_vars:
-      all:
-        updates_role_enabled: true
 verifier:
   name: ansible
+platforms:
+  - name: updates
+    image: docker.io/${uns:-jomrr}/molecule-${img:-fedora}:${tag:-latest}
+    pre_build_image: true
+    entrypoint: null
+    command: null
+    systemd: true

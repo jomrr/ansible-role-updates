@@ -1,5 +1,5 @@
 ---
-# role: ansible-role-updates
+# role: jomrr.updates
 # file: defaults/main/apt.yml
 
 # issue apt-get autoremove every n days
